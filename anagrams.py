@@ -39,12 +39,13 @@ def find_anagrams(words):
         {'dgo': ['dog'], 'act': ['cat', 'act']}
 
     """
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
-    return anagrams
+    anagrams = {}
+    for word in words:
+        a_word = alphabetize(word)
+        if a_word not in anagrams:
+            anagrams[a_word] = [word]
+        else:
+            anagrams[a_word].append(word)
 
 
 if __name__ == "__main__":
